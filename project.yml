@@ -57,7 +57,6 @@
     #- beep                           # beeps when finished, so you don't waste time waiting for ceedling
     - module_generator                # handy for quickly creating source, header, and test templates
     - gcov                           # test coverage using gcov. Requires gcc, gcov, and a coverage analyzer like gcovr
-    # - xml_tests_report
     #- bullseye                       # test coverage using bullseye. Requires bullseye for your platform
     #- command_hooks                  # write custom actions to be called at different points during the build process
     #- compile_commands_json_db       # generate a compile_commands.json file
@@ -69,7 +68,7 @@
     #- report_build_warnings_log
     #- report_tests_gtestlike_stdout
     #- report_tests_ide_stdout
-    #- report_tests_log_factory
+    - report_tests_log_factory
     - report_tests_pretty_stdout
     #- report_tests_raw_output_log
     #- report_tests_teamcity_stdout
@@ -242,9 +241,9 @@
   :reports: # Specify one or more reports to generate.
     # Make an HTML summary report.
     # - HtmlBasic
-    - HtmlDetailed
+    # - HtmlDetailed
     # - Text
-    # - Cobertura
+    - Cobertura
     # - SonarQube
     # - JSON
     # - HtmlInline
@@ -264,11 +263,11 @@
   :gcovr:
     # :html_artifact_filename: TestCoverageReport.html
     # :html_title: Test Coverage Report
-    :html_medium_threshold: 75
-    :html_high_threshold: 90
+    # :html_medium_threshold: 75
+    # :html_high_threshold: 90
     # :html_absolute_paths: TRUE
     # :html_encoding: UTF-8
-  :xml_report: TRUE
+    :cobertura_artifact_filename: cobertura.xml
 
 
 # :xml_tests_report:
