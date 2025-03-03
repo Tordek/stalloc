@@ -191,3 +191,10 @@ void test_stalloc_defrag_merges_nodes_freed_in_any_order(void)
   st_defrag(stalloc);
   TEST_ASSERT_EQUAL_MESSAGE(1, stalloc_node_count(stalloc), "Defrag should merge nodes freed in a different order.");
 }
+
+void test_stalloc_allocations_should_be_aligned_to_size_t(void)
+{
+  void *memory1 = st_alloc(stalloc, 1);
+  void *memory2 = st_alloc(stalloc, 1);
+  TEST_ASSERT_EQUAL_MESSAGE(0, (size_t)memory2 % sizeof(size_t), "Allocated memory should be aligned to size_t.");
+}

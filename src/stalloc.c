@@ -30,6 +30,8 @@ void *st_alloc(struct smhead *stalloc, size_t size)
   struct smnode *chosen = NULL;
   size_t smallest_node_size = SIZE_MAX;
 
+  size = (size + sizeof(size_t) - 1) / sizeof(size_t) * sizeof(size_t);
+
   // Find the smallest node that can fit the data.
   for (struct smnode *current = stalloc->first; current != NULL; current = current->next)
   {
